@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,21 +19,29 @@ interface SuccessProps {
 
 export default function Success({ customerName, product }: SuccessProps) {
     return (
-        <SuccessContainer>
-            <h1>Purchase completed!</h1>
+        <>
+            <Head>
+                <title>Purchase Completed | Ignite Shop</title>
 
-            <ImageContainer>
-                <Image src={product.imageUrl} width={120} height={110} alt="" />
-            </ImageContainer>
+                <meta name="robots" content="noindex" />
+            </Head>
 
-            <p>
-                Hello <strong>{customerName}</strong>, your <strong>{product.name}</strong> is already on his way to your home.
-            </p>
+            <SuccessContainer>
+                <h1>Purchase completed!</h1>
 
-            <Link href='/'>
-                Back to catalog
-            </Link>
-        </SuccessContainer>
+                <ImageContainer>
+                    <Image src={product.imageUrl} width={120} height={110} alt="" />
+                </ImageContainer>
+
+                <p>
+                    Hello <strong>{customerName}</strong>, your <strong>{product.name}</strong> is already on his way to your home.
+                </p>
+
+                <Link href='/'>
+                    Back to catalog
+                </Link>
+            </SuccessContainer>
+        </>
     )
 }
 
